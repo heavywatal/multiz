@@ -1,14 +1,11 @@
-CC = gcc
 CFLAGS = -Wall -Wextra
-CFLAGS += -O0
-#CFLAGS += -ggdb3
-#CFLAGS += -pg
+CFLAGS += -O2
 
 PROGS = all_bz lav2maf pair2tb single_cov2 blastzWrapper maf_project maf2lav maf2fasta maf_order mafFind get_standard_headers maf_checkThread tba roast multic multiz maf_sort get_covered
-  
-ARCH ?= $(shell arch)
+
 INSTALL = install -c
-INSTALLDIR = /depot/apps/$(ARCH)/bin
+DESTDIR = .
+INSTALLDIR = ${DESTDIR}/bin
 DATE=$(shell date +"%m%d%y")
 
 all : $(PROGS)
@@ -19,7 +16,7 @@ pair2tb : pair2tb.c mz_scores.c mz_scores.h maf.c maf.h util.c util.h seq.c seq.
 single_cov2 : single_cov2.c mz_scores.c maf.c maf.h util.c util.h mz_scores.h maf.h seq.c seq.h nib.c nib.h charvec.c charvec.h multi_util.c multi_util.h
 	$(CC) $(CFLAGS) single_cov2.c mz_scores.c multi_util.c maf.c util.c seq.c nib.c charvec.c -o single_cov2
 
-lav2maf : lav2maf.c mz_scores.c maf.c maf.h util.c util.h mz_scores.h multi_util.c multi_util.h seq.c seq.h nib.c nib.h charvec.c charvec.h 
+lav2maf : lav2maf.c mz_scores.c maf.c maf.h util.c util.h mz_scores.h multi_util.c multi_util.h seq.c seq.h nib.c nib.h charvec.c charvec.h
 	$(CC) $(CFLAGS) lav2maf.c mz_scores.c maf.c util.c seq.c nib.c charvec.c multi_util.c -o lav2maf
 
 all_bz : all_bz.c util.c util.h
@@ -39,7 +36,7 @@ maf2fasta : maf2fasta.c util.h util.c maf.h maf.c multi_util.h multi_util.c seq.
 
 maf_order : util.h util.c maf.h maf.c multi_util.h multi_util.c maf_order.h maf_order.c seq.h seq.c nib.h nib.c charvec.h charvec.c mz_scores.h mz_scores.c maf_order_main.c
 	$(CC) $(CFLAGS) util.c maf.c multi_util.c maf_order.c seq.c nib.c charvec.c mz_scores.c maf_order_main.c -o maf_order
-	
+
 mafFind : util.h util.c maf.h maf.c multi_util.h multi_util.c mz_scores.h mz_scores.c mafFind.c
 	$(CC) $(CFLAGS) util.c maf.c multi_util.c mz_scores.c mafFind.c -o mafFind
 
