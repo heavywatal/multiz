@@ -4,6 +4,8 @@
 #include "mz_scores.h"
 
 int **ss70, **ss85, *gop70, *gop85;
+int **ss, *gop;
+int gap_open, gap_extend;
 
 static const uchar nchars[] = "ACGT";
 static const int HOX70[4][4] = {	// for human-rodent
