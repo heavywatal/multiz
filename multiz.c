@@ -60,7 +60,6 @@ extern int SML_BREAK_WID;
 int multiz(struct mafAli** wk_list1, struct mafAli** wk_list2, FILE* fpw1, FILE* fpw2, int v) {
     struct mafAli *a1, *a2, *new_ali;
     int beg1, end1, beg2, end2, beg, end, col_beg, col_end;
-    int test=0;
 
     a1 = retrieve_first(wk_list1);
     a2 = retrieve_first(wk_list2);
@@ -86,9 +85,6 @@ int multiz(struct mafAli** wk_list1, struct mafAli** wk_list2, FILE* fpw1, FILE*
             continue;
         if ( a2->components->start + a2->components->size - 1 < a1->components->start)
             continue;
-
-        if ( a1->components->start == 11305 )
-            test++;
 
 
         beg1 = a1->components->start;                           // at this point, a1 a2 overlap or
