@@ -19,3 +19,5 @@
 /get_covered
 # make tarfile
 /multiz-tba.*.tar.gz
+
+/bin/
